@@ -1,0 +1,36 @@
+{
+  "canisters": {
+    "vibe_backend": {
+      "candid": "src/vibe_backend/vibe_backend.did",
+      "package": "vibe_backend",
+      "type": "rust"
+    },
+    "vibe_frontend": {
+      "dependencies": [
+        "vibe_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/vibe_frontend/src/index.html"
+      },
+      "source": [
+        "src/vibe_frontend/assets",
+        "dist/vibe_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.11.2",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
