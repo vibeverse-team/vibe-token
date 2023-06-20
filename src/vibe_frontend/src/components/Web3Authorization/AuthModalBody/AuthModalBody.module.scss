@@ -1,0 +1,108 @@
+// MOVE TO MAIN.CSS / FIX TAILWIND AND SCSS CONFLICTS AND CSS STRUCTURE OF DAPP
+
+$grid-breakpoints: (
+  'xs': 0,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px,
+);
+
+$container-widths: (
+  'xs': 100%,
+  'sm': 540px,
+  'md': 720px,
+  'lg': 960px,
+  'xl': 1140px,
+  'xxl': 1320px,
+);
+
+@mixin media-breakpoint-up($grid-breakpoint) {
+  @media only screen and (min-width: map-get($grid-breakpoints, $grid-breakpoint)) {
+    @content;
+  }
+}
+
+.authModalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: -100px;
+
+  @include media-breakpoint-up('md') {
+    flex-direction: initial;
+    align-items: center;
+  }
+}
+
+.authModalBody, Title {
+  color: white;
+}
+
+.walletConnectContainer,
+.signInContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include media-breakpoint-up('md') {
+    flex: 1;
+  }
+}
+
+.linesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-family: Raleway;
+  color: var(--secondary-font-color);
+
+  @include media-breakpoint-up('md') {
+    flex-direction: column;
+    justify-content: initial;
+  }
+}
+
+.line {
+  flex: 1;
+  max-width: 4rem;
+  border: 1px solid var(--divider-color);
+
+  @include media-breakpoint-up('md') {
+    flex: initial;
+    max-width: initial;
+    height: 4rem;
+  }
+}
+
+.signUpNoteContainer {
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.signUpButton {
+  color: transparent;
+  background-image: var(--accent-color);
+  // background-clip: text;
+  font-family: Raleway;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.buttonContainer {
+  margin-top: 0.75rem;
+  align-self: center;
+}

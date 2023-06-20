@@ -5,6 +5,11 @@
       "package": "vibe_backend",
       "type": "rust"
     },
+    "token_sale": {
+      "candid": "src/token_sale/token_sale.did",
+      "package": "token_sale",
+      "type": "rust"
+    },
     "vibe_frontend": {
       "dependencies": [
         "vibe_backend"

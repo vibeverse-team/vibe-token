@@ -47,7 +47,7 @@ module.exports = {
   entry: {
     // The frontend.entrypoint points to the HTML file for this build, so we need
     // to replace the extension to `.js`.
-    index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".js"),
+    index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
   },
   devtool: isDevelopment ? "source-map" : false,
   optimization: {
@@ -74,12 +74,53 @@ module.exports = {
   // webpack configuration. For example, if you are using React
   // modules and CSS as described in the "Adding a stylesheet"
   // tutorial, uncomment the following lines:
-  // module: {
-  //  rules: [
-  //    { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
-  //    { test: /\.css$/, use: ['style-loader','css-loader'] }
-  //  ]
-  // },
+  module: {
+    rules: [
+      { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
+      { test: /\.css$/, use: ['style-loader','css-loader'] },
+      {
+       test: /\.(gltf)$/,
+       use: [
+         {
+           loader: "gltf-webpack-loader"
+         }
+       ]
+      },
+      {
+       test: /\.(bin)$/,
+       use: [
+         {
+           loader: 'file-loader',
+           options: {}
+         }
+       ]
+     },
+     {
+       test: /\.s[ac]ss$/i,
+       use: [
+         // Creates `style` nodes from JS strings
+         "style-loader",
+         // Translates CSS into CommonJS
+         "css-loader",
+         // Compiles Sass to CSS
+         "sass-loader",
+       ],
+     },
+     {
+       test: /\.(gif|png|jpe?g|svg)$/i,
+       use: [
+         'file-loader',
+         {
+           loader: 'image-webpack-loader',
+           options: {
+             bypassOnDebug: true, // webpack@1.x
+             disable: true, // webpack@2.x and newer
+           },
+         },
+       ],
+     }
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, frontend_entry),

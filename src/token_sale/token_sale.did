@@ -1,0 +1,12 @@
+type BuyError = variant {
+    SupplyTooLow : record { supply : nat };
+    TransferError;
+};
+
+service: {
+    get_vibe_token: () -> (opt principal) query;
+    get_wicp: () -> (opt principal) query;
+    get_allowance_of: (principal) -> (variant { Ok : nat; Err : text });
+    initialize: (principal, principal) -> (variant { Ok : nat; Err : text });
+    buy : (nat) -> (variant { Ok : nat; Err : BuyError });
+}

@@ -1,5 +1,5 @@
 [package]
-name = "vibe__token_backend"
+name = "token_sale"
 version = "0.1.0"
 edition = "2021"
 
@@ -13,6 +13,6 @@ candid = "0.7.14"
 hex = "0.4.3"
 ic-cdk = "0.5.2"
 ic-cdk-macros = "0.5.2"
-serde = "1.0.159"
+serde = "1.0.160"
 serde_bytes = "0.11.9"
 common = { path="../common" }
