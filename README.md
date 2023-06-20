@@ -1,37 +1,42 @@
-# vibe
+# vibe token
 
-Welcome to your new vibe project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+Repository containing the code of the vibe token and the token sale canister.
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+## Brief description
 
-To learn more before you start working with vibe, see the following documentation available online:
+Vibe token will be used in the [vibeverse](http://vibeverse.xyz/) app as a token to pay fees when creating a collection or minting an nft. Since we want as much feedback as possible on vibeverse during the first month or two of the official deployment to production the token won't be required for using the app.
 
-- [Quick Start](https://smartcontracts.org/docs/quickstart/quickstart-intro.html)
-- [SDK Developer Tools](https://smartcontracts.org/docs/developers-guide/sdk-guide.html)
-- [Rust Canister Devlopment Guide](https://smartcontracts.org/docs/rust-guide/rust-intro.html)
-- [ic-cdk](https://docs.rs/ic-cdk)
-- [ic-cdk-macros](https://docs.rs/ic-cdk-macros)
-- [Candid Introduction](https://smartcontracts.org/docs/candid-guide/candid-intro.html)
-- [JavaScript API Reference](https://erxue-5aaaa-aaaab-qaagq-cai.raw.ic0.app)
+## Fee payment
 
-If you want to start working on your project right away, you might want to try the following commands:
+As mentioned the vibe token will be used to pay fees when using [vibeverse](http://vibeverse.xyz/), but we did not mention earlier how these fees will be used. The plan is to have the fees distributed amongst all of the token holders. This means that whenever someone does something on vibeverse that requires fee payment everyone who owns some vibe tokens will get the equivalent portion of the fee.
+This will be distributed based on the percentage of what the user holds from the total market cap.
 
-```bash
-cd vibe/
-dfx help
-dfx canister --help
+## Prerequisets to local development
+
+Before following the instructions we recommend following this documentation to set up all the prerequisets. Since the backend is written in rust make sure you have all of the necessities that are described here
+
+## Local development
+**Follow the following steps to locally deploy the frontend:**
 ```
-
-## Running the project locally
-
-If you want to test your project locally, you can use the following commands:
-
-```bash
-# Starts the replica, running in the background
+npm i
+```
+```
+npm run dev # The website will be accessible at http://localhost:3000/
+# OR
 dfx start --background
-
-# Deploys your canisters to the replica and generates your candid interface
 dfx deploy
 ```
-
-Once the job completes, your application will be available at `http://localhost:8000?canisterId={asset_canister_id}`.
+**Follow the following steps to locally deploy the backend:**
+```
+# To compile the backend code:
+cargo build
+```
+```
+# To run all the backend tests:
+cargo test
+```
+```
+# To deploy
+dfx start --background
+dfx deploy
+```
