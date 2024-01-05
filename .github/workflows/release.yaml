@@ -1,0 +1,28 @@
+on:
+  release:
+    types: [created]
+
+name: Release
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --target wasm32-unknown-unknown --release -p vibe_token --locked
+      - uses: meeDamian/github-release@v2.0.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: >
+            target/wasm32-unknown-unknown/release/vibe_token.wasm
+            src/vibe_token/vibe_token.did
+          allow_override: true
