@@ -21,10 +21,16 @@ jobs:
         with:
           command: build
           args: --target wasm32-unknown-unknown --release -p vibe_token --locked
+      - run: cp src/vibe_token/vibe_token.did vibe_token.did
       - uses: meeDamian/github-release@v2.0.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: >
-            target/wasm32-unknown-unknown/release/vibe_token.wasm
-            src/vibe_token/vibe_token.did
+          gzip: false
+          files: vibe_token.did
+          allow_override: true
+      - run: cp target/wasm32-unknown-unknown/release/vibe_token.wasm vibe_token.wasm
+      - uses: meeDamian/github-release@v2.0.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: vibe_token.wasm
           allow_override: true
