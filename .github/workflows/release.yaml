@@ -15,6 +15,7 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
+      - run: rustup target add wasm32-unknown-unknown
       - uses: actions-rs/cargo@v1
         with:
           command: build
