@@ -1,6 +1,2 @@
 [workspace]
-members = [
-    "src/vibe_backend",
-    "src/token_sale",
-    "src/common",
-]
+members = ["src/vibe_token", "src/token_sale", "src/common"]
